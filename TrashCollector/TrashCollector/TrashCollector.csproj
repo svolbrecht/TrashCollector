@@ -214,6 +214,18 @@
     <Compile Include="Migrations\201810021217589_roles implemented.Designer.cs">
       <DependentUpon>201810021217589_roles implemented.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810021248156_foreign key added.cs" />
+    <Compile Include="Migrations\201810021248156_foreign key added.Designer.cs">
+      <DependentUpon>201810021248156_foreign key added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810021303076_foreign key two.cs" />
+    <Compile Include="Migrations\201810021303076_foreign key two.Designer.cs">
+      <DependentUpon>201810021303076_foreign key two.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810021441443_update.cs" />
+    <Compile Include="Migrations\201810021441443_update.Designer.cs">
+      <DependentUpon>201810021441443_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -319,6 +331,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810021217589_roles implemented.resx">
       <DependentUpon>201810021217589_roles implemented.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810021248156_foreign key added.resx">
+      <DependentUpon>201810021248156_foreign key added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810021303076_foreign key two.resx">
+      <DependentUpon>201810021303076_foreign key two.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810021441443_update.resx">
+      <DependentUpon>201810021441443_update.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
