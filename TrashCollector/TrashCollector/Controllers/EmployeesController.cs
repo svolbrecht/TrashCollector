@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,9 +16,20 @@ namespace TrashCollector.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Employees
+
         public ActionResult Index()
         {
-            return View(db.Employee.ToList());
+            DateTime dateTime = DateTime.Now;
+            var dayOfWeek = dateTime.DayOfWeek.ToString();
+            var userId = User.Identity.GetUserId();
+            var currentEmployee = db.Employee.Where(e => e.ApplicationUserId == userId).FirstOrDefault();
+            var employeeZip = currentEmployee.Zipcode; 
+            var customersInZip = db.Customer.Where(c => c.Zipcode == employeeZip);
+            var customersInZipForDay = customersInZip.Where(d => d.WeeklyPickUp == dayOfWeek);
+            //var specialPickups = db.Customer.Where(c => c.SpecialPickUp.ToString() == dayOfWeek).ToList();
+            customersInZipForDay.Union(db.Customer.Where(c => c.SpecialPickUp.ToShortDateString() == dateTime.ToShortDateString())).ToList();
+            return View(customersInZipForDay);
+            //db.Employee.ToList()
         }
 
         // GET: Employees/Details/5
@@ -50,6 +62,7 @@ namespace TrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
+                employee.ApplicationUserId = User.Identity.GetUserId();
                 db.Employee.Add(employee);
                 db.SaveChanges();
                 return RedirectToAction("Index");
