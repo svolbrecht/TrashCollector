@@ -30,13 +30,13 @@ namespace TrashCollector.Models
         public string WeeklyPickUp { get; set; }
 
         [Display(Name = "Special Pickup")]
-        public DateTime? SpecialPickUp { get; set; }
+        public string SpecialPickUp { get; set; }
 
         [Display(Name = "Service Hold Start Date")]
         public DateTime? StartPickUp { get; set; }
 
         [Display(Name = "Service Hold End Date")]
-        public DateTime? EndPickUp { get; set; }
+        public string EndPickUp { get; set; }
 
 
         [ForeignKey("ApplicationUser")]

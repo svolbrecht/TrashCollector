@@ -79,15 +79,11 @@ namespace TrashCollector.Controllers
             var userId = User.Identity.GetUserId();
             var currentUser = db.Customer.Where(c => c.ApplicationUserId == userId).FirstOrDefault();
 
-            //currentUser.Name = currentUser.Name;
-            //currentUser.Address = currentUser.Address;
-            //currentUser.City = currentUser.City;
-            //currentUser.State = currentUser.State;
-            //currentUser.Zipcode = currentUser.Zipcode;
             currentUser.WeeklyPickUp = customer.WeeklyPickUp;
             currentUser.SpecialPickUp = customer.SpecialPickUp;
             currentUser.StartPickUp = customer.StartPickUp;
             currentUser.EndPickUp = customer.EndPickUp;
+
             db.SaveChanges();
             return RedirectToAction("Details");
             // return View("Details");

@@ -27,9 +27,23 @@ namespace TrashCollector.Controllers
             var customersInZip = db.Customer.Where(c => c.Zipcode == employeeZip);
             var customersInZipForDay = customersInZip.Where(d => d.WeeklyPickUp == dayOfWeek);
             //var specialPickups = db.Customer.Where(c => c.SpecialPickUp.ToString() == dayOfWeek).ToList();
-            customersInZipForDay.Union(db.Customer.Where(c => c.SpecialPickUp.ToShortDateString() == dateTime.ToShortDateString())).ToList();
-            return View(customersInZipForDay);
+            var shortDate = dateTime.ToShortDateString();
+            var specialPickups = db.Customer.Where(c => c.SpecialPickUp == shortDate);
+            var customersForDay = customersInZipForDay.Union(specialPickups);
+            customersForDay.ToList();
+            return View(customersForDay);
             //db.Employee.ToList()
+        }
+
+        public ActionResult PickupsForChosenDay(string chosenDay)
+        {
+           /* chosenDay =;*/ //input from drop down menu of days of week;
+            var userId = User.Identity.GetUserId();
+            var currentEmployee = db.Employee.Where(e => e.ApplicationUserId == userId).FirstOrDefault();
+            var employeeZip = currentEmployee.Zipcode;
+            var customersInZip = db.Customer.Where(c => c.Zipcode == employeeZip);
+            var customersInZipForDay = customersInZip.Where(d => d.WeeklyPickUp == chosenDay).ToList();
+            return View(customersInZipForDay);
         }
 
         // GET: Employees/Details/5
@@ -74,16 +88,18 @@ namespace TrashCollector.Controllers
         // GET: Employees/Edit/5
         public ActionResult Edit(int? id)
         {
+            Customer customer = db.Customer.Find(id);
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+              
             }
-            Employee employee = db.Employee.Find(id);
-            if (employee == null)
-            {
-                return HttpNotFound();
-            }
-            return View(employee);
+
+
+            //if (customer == null)
+            //{
+            //    return HttpNotFound();
+            //}
+            return View(customer);
         }
 
         // POST: Employees/Edit/5
@@ -91,15 +107,20 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Zipcode")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,Name,Address,City,State,Zipcode,WeeklyPickUp,SpecialPickUp,StartPickUp,EndPickUp")]Customer customer)
         {
+            var currentCustomer = db.Customer.Find(customer.Id);
+            //customer.Balance ;
+
+            //db.SaveChanges();
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                currentCustomer.Balance = customer.Balance;
+                //db.Entry(currentCustomer).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(employee);
+            return View(customer);
         }
 
         // GET: Employees/Delete/5
