@@ -38,7 +38,7 @@ namespace TrashCollector.Models
         public DateTime? StartPickUp { get; set; }
 
         [Display(Name = "Service Hold End Date")]
-        public string EndPickUp { get; set; }
+        public DateTime? EndPickUp { get; set; }
 
 
         [ForeignKey("ApplicationUser")]

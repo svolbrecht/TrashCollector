@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -23,14 +24,15 @@ namespace TrashCollector.Controllers
             var dayOfWeek = dateTime.DayOfWeek.ToString();
             var userId = User.Identity.GetUserId();
             var currentEmployee = db.Employee.Where(e => e.ApplicationUserId == userId).FirstOrDefault();
-            var employeeZip = currentEmployee.Zipcode; 
+            var employeeZip = currentEmployee.Zipcode;
             var customersInZip = db.Customer.Where(c => c.Zipcode == employeeZip);
-            var customersInZipForDay = customersInZip.Where(d => d.WeeklyPickUp == dayOfWeek);
-            //var specialPickups = db.Customer.Where(c => c.SpecialPickUp.ToString() == dayOfWeek).ToList();
+            var customersInZipForDay = customersInZip.Where(d => d.WeeklyPickUp == dayOfWeek && d.StartPickUp == null && d.EndPickUp == null);
             var shortDate = dateTime.ToShortDateString();
             var specialPickups = db.Customer.Where(c => c.SpecialPickUp == shortDate);
             var customersForDay = customersInZipForDay.Union(specialPickups);
             customersForDay.ToList();
+            //customersForDay.RemoveAll(c => c.)
+
             return View(customersForDay);
             //db.Employee.ToList()
         }

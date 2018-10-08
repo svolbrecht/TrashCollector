@@ -262,6 +262,10 @@
     <Compile Include="Migrations\201810081244139_tweaked.Designer.cs">
       <DependentUpon>201810081244139_tweaked.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810081536478_datetime stuff.cs" />
+    <Compile Include="Migrations\201810081536478_datetime stuff.Designer.cs">
+      <DependentUpon>201810081536478_datetime stuff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -405,6 +409,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810081244139_tweaked.resx">
       <DependentUpon>201810081244139_tweaked.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810081536478_datetime stuff.resx">
+      <DependentUpon>201810081536478_datetime stuff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
