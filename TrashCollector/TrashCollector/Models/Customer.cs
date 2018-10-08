@@ -24,7 +24,9 @@ namespace TrashCollector.Models
 
         public int Zipcode { get; set; }
 
-        public double Balance { get; set; }
+        public string Balance { get; set; }
+
+        public bool IsTrashPickedUp { get; set; }
 
         [Display(Name = "Weekly Pickup Day")]
         public string WeeklyPickUp { get; set; }

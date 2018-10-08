@@ -246,6 +246,22 @@
     <Compile Include="Migrations\201810051619464_model change.Designer.cs">
       <DependentUpon>201810051619464_model change.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810072348237_bool added.cs" />
+    <Compile Include="Migrations\201810072348237_bool added.Designer.cs">
+      <DependentUpon>201810072348237_bool added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810072352067_bool display added.cs" />
+    <Compile Include="Migrations\201810072352067_bool display added.Designer.cs">
+      <DependentUpon>201810072352067_bool display added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810081025295_balance to string.cs" />
+    <Compile Include="Migrations\201810081025295_balance to string.Designer.cs">
+      <DependentUpon>201810081025295_balance to string.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810081244139_tweaked.cs" />
+    <Compile Include="Migrations\201810081244139_tweaked.Designer.cs">
+      <DependentUpon>201810081244139_tweaked.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -377,6 +393,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201810051619464_model change.resx">
       <DependentUpon>201810051619464_model change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810072348237_bool added.resx">
+      <DependentUpon>201810072348237_bool added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810072352067_bool display added.resx">
+      <DependentUpon>201810072352067_bool display added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810081025295_balance to string.resx">
+      <DependentUpon>201810081025295_balance to string.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810081244139_tweaked.resx">
+      <DependentUpon>201810081244139_tweaked.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

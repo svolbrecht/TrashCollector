@@ -57,7 +57,8 @@ namespace TrashCollector.Controllers
             if (ModelState.IsValid)
             {
                 customer.ApplicationUserId = User.Identity.GetUserId();
-                customer.Balance = 0;
+                customer.Balance = "0";
+                customer.IsTrashPickedUp = false;
                 db.Customer.Add(customer);
                 db.SaveChanges();
                 return RedirectToAction("Details");

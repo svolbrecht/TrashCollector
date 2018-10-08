@@ -107,7 +107,7 @@ namespace TrashCollector.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Address,City,State,Zipcode,WeeklyPickUp,SpecialPickUp,StartPickUp,EndPickUp")]Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Name,Address,City,State,Zipcode,WeeklyPickUp,SpecialPickUp,StartPickUp,EndPickUp,Balance,IsTrashPickedUp")]Customer customer)
         {
             var currentCustomer = db.Customer.Find(customer.Id);
             //customer.Balance ;
